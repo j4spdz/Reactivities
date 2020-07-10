@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +29,7 @@ namespace DatingApp.API.Controllers
     [HttpGet("{id}")]
     public async Task<ActionResult<string>> Get(int id)
     {
-			var value = await _context.Values.FindAsync(id);
+      var value = await _context.Values.FindAsync(id);
       return Ok(value);
     }
 
