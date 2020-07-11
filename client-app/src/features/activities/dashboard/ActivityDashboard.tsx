@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 
 import { Grid } from 'semantic-ui-react';
 
@@ -16,7 +16,9 @@ interface IProps {
 	setSelectedActivity: (activity: IActivity | null) => void;
 	createActivity: (activity: IActivity) => void;
 	editActivity: (activity: IActivity) => void;
-	deleteActivity: (id: string) => void;
+	deleteActivity: (e: SyntheticEvent<HTMLButtonElement>, id: string) => void;
+	submitting: boolean;
+	target: string;
 }
 
 const ActivityDashboard: React.FC<IProps> = ({
@@ -29,6 +31,8 @@ const ActivityDashboard: React.FC<IProps> = ({
 	createActivity,
 	editActivity,
 	deleteActivity,
+	submitting,
+	target,
 }) => {
 	return (
 		<Grid>
@@ -37,6 +41,8 @@ const ActivityDashboard: React.FC<IProps> = ({
 					activities={activities}
 					selectActivity={selectActivity}
 					deleteActivity={deleteActivity}
+					submitting={submitting}
+					target={target}
 				/>
 			</Grid.Column>
 			<Grid.Column width={6}>
@@ -54,6 +60,7 @@ const ActivityDashboard: React.FC<IProps> = ({
 						activity={selectedActivity!}
 						createActivity={createActivity}
 						editActivity={editActivity}
+						submitting={submitting}
 					/>
 				)}
 			</Grid.Column>
