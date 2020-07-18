@@ -13,7 +13,6 @@ import DateInput from '../../../app/common/form/DateInput';
 import { categories } from '../../../app/common/options/categoryOptions';
 
 import { observer } from 'mobx-react-lite';
-import ActivityStore from '../../../app/stores/activityStore';
 import { RouteComponentProps } from 'react-router-dom';
 import { Form as FinalForm, Field } from 'react-final-form';
 import {
@@ -22,6 +21,7 @@ import {
 	composeValidators,
 	hasLengthGreaterThan,
 } from 'revalidate';
+import { RootStoreContext } from '../../../app/stores/rootStore';
 
 const validate = combineValidators({
 	title: isRequired({ message: 'The title is required' }),
@@ -46,13 +46,13 @@ const ActivityForm: React.FC<RouteComponentProps<DetailsParams>> = ({
 	match,
 	history,
 }) => {
-	const activityStore = useContext(ActivityStore);
+	const rootStore = useContext(RootStoreContext);
 	const {
 		createActivity,
 		editActivity,
 		submitting,
 		loadActivity,
-	} = activityStore;
+	} = rootStore.activityStore;
 
 	const [activity, setActivity] = useState(new ActivityFormValues());
 	const [loading, setLoading] = useState(false);
