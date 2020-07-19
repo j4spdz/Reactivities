@@ -3,6 +3,7 @@ import React from 'react';
 import { Item, Button, SegmentGroup, Segment, Icon } from 'semantic-ui-react';
 
 import { IActivity } from '../../../app/models/activity';
+import ActivityListItemAttendees from './ActivityListItemAttendees';
 
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
@@ -29,7 +30,9 @@ const ActivityListItem: React.FC<IActivity> = (activity) => {
 				<Icon name='marker' />
 				{venue}, {city}
 			</Segment>
-			<Segment secondary>Attendees will go here</Segment>
+			<Segment secondary>
+				<ActivityListItemAttendees attendees={activity.attendees} />
+			</Segment>
 			<Segment clearing>
 				<span>{description}</span>
 				<Button
