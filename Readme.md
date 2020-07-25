@@ -15,3 +15,8 @@ backend
 cd API
 donet watch run
 ```
+
+## Enhancement
+
+- Having a timer for each comment for the activity to update the time
+- Lazy loading of comments

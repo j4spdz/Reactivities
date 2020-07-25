@@ -48,7 +48,8 @@ namespace API
         {
           policy.AllowAnyHeader()
             .AllowAnyMethod()
-            .WithOrigins("http://localhost:3000");
+            .WithOrigins("http://localhost:3000")
+            .AllowCredentials();
         });
       });
 
